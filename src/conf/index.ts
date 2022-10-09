@@ -1,5 +1,7 @@
 import '../assets/styles/canvas.scss';
+import initCanvas from './canvas';
 import tools from "../tools";
+import drawPen from "../events/drawPen";
 
 interface IParamsInit {
     width?: number | 500;
@@ -7,40 +9,44 @@ interface IParamsInit {
 }
 
 class init {
-    canvas: HTMLCanvasElement;
     layout: HTMLDivElement | null;
     width?: number | 500;
     height?: number | 500;
 
-    constructor(params: IParamsInit) {
-        this.canvas = document.createElement("canvas") as HTMLCanvasElement;
+    constructor(params?: IParamsInit) {
         this.width = params.width;
         this.height = params.height;
 
+        /* render canvas */
         this.renderCanvas()
+
+        /* draw pen */
+        new drawPen().draw();
     }
     
     renderCanvas() {
+        const { canvas } = new initCanvas();
+
         this.layout = document.getElementById("drawLayout") as HTMLDivElement
         const _width = document.createAttribute("width");
         _width.value = `${this.width}px`;
         const _height = document.createAttribute("height");
         _height.value = `${this.height}px`;
-        const _className = document.createAttribute("class");
-        _className.value = '_canvas';
+        const _idName = document.createAttribute("id");
+        _idName.value = '_canvas_draw';
 
-        this.canvas.setAttributeNode(_width)
-        this.canvas.setAttributeNode(_height)
-        this.canvas.setAttributeNode(_className)
+        canvas.setAttributeNode(_width)
+        canvas.setAttributeNode(_height)
+        canvas.setAttributeNode(_idName)
 
         /* render tools navbar */
         const { navbar } = new tools()
         this.layout.appendChild(navbar)
 
         /* render canvas */
-        this.layout.appendChild(this.canvas)
+        this.layout.appendChild(canvas)
     }
-
+    
 }
 
 export default init;

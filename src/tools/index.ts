@@ -1,4 +1,5 @@
 import "../assets/styles/navbar.scss";
+// import initCanvas from "../conf/canvas";
 import buttonTools from "./buttonTools";
 import iconTools from "./iconTools";
 
@@ -12,14 +13,20 @@ class tools {
     buttonTools: IButtonTools;
 
     constructor() {
+        /* create toolbar layout */
         this.navbar = document.createElement("nav") as HTMLDivElement;
         this.styleNavbarTools();
+
+        /* init toolbar & render */
         this.initialButtonTools = ["pencil", "text", "color"];
         this.renderToolbar();
 
-        this.buttonTools.pencil.addEventListener("click", (e) => {
-            console.log(e);
-        });
+        // const { ctx } = new initCanvas()
+        // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // this.buttonTools.pencil.addEventListener("click", (e) => {
+        //     // console.log(e);
+        //     console.log(ctx)
+        // });
     }
 
     styleNavbarTools() {
