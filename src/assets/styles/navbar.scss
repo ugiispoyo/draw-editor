@@ -5,9 +5,12 @@
     border-radius: 5px;
     margin-bottom: 5px;
     border: 1px solid rgb(134, 134, 134);
-    width: 300px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 150px;
     height: 40px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     & ._t_button_navbar {

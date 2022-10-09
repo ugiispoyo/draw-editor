@@ -22,7 +22,7 @@ class iconTools {
             case "text":
                 _src.value = IText;
                 break;
-            case "palette-color":
+            case "color":
                 _src.value = IPalette;
                 break;
             default:

@@ -1,7 +1,7 @@
 import '../assets/styles/canvas.scss';
 import tools from "../tools";
 
-interface ParamsInit {
+interface IParamsInit {
     width?: number | 500;
     height?:  number | 500
 }
@@ -12,10 +12,12 @@ class init {
     width?: number | 500;
     height?: number | 500;
 
-    constructor(params: ParamsInit) {
+    constructor(params: IParamsInit) {
         this.canvas = document.createElement("canvas") as HTMLCanvasElement;
         this.width = params.width;
         this.height = params.height;
+
+        this.renderCanvas()
     }
     
     renderCanvas() {
