@@ -1,4 +1,4 @@
-
+import '../assets/styles/canvas.scss';
 import tools from "../tools";
 
 interface ParamsInit {
@@ -24,9 +24,12 @@ class init {
         _width.value = `${this.width}px`;
         const _height = document.createAttribute("height");
         _height.value = `${this.height}px`;
+        const _className = document.createAttribute("class");
+        _className.value = '_canvas';
 
         this.canvas.setAttributeNode(_width)
         this.canvas.setAttributeNode(_height)
+        this.canvas.setAttributeNode(_className)
 
         /* render tools navbar */
         const { navbar } = new tools()
